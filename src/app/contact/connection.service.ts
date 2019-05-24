@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 providedIn: 'root'
 })
 export class ConnectionService {
-url: string = 'http://localhost:3000/send';
+mail = 'http://mail.rwebdesign7.com.';
 constructor(private http: HttpClient) { }
 
 sendMessage(messageContent: any) {
-  return this.http.post(this.url,
+  return this.http.post(this.mail,
   JSON.stringify(messageContent),
   { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' });
 }
