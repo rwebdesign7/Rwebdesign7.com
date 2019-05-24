@@ -369,14 +369,14 @@
 
   <mat-horizontal-stepper labelPosition="bottom" #stepper>
     <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+      <form (ngSubmit)="Onsubmit()" [formGroup]="firstFormGroup">
         <ng-template matStepLabel></ng-template>
         <label id="example-radio-group-label">vous avez besoin de :</label> <br>
         <mat-radio-group
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
           [(ngModel)]="favoriteSeason">
-          <mat-radio-button class="example-radio-button" *ngFor="let besoin of besoins" [value]="season">
+          <mat-radio-button formControlName="besoin" class="example-radio-button" *ngFor="let besoin of besoins" [value]="besoin">
             {{besoin}}
           </mat-radio-button>
         </mat-radio-group>
@@ -387,15 +387,15 @@
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" optional>
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="secondFormGroup" >
+      <form>
         <ng-template matStepLabel></ng-template>
         <label >Avez vous la charte graphique?</label><br>
-        <mat-radio-group
+        <mat-radio-group [formGroup]="firstFormGroup"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
           [(ngModel)]="favoriteSeason">
-          <mat-radio-button class="example-radio-button" *ngFor="let charte of chartes" [value]="charte">
+          <mat-radio-button formControlName="charte" class="example-radio-button" *ngFor="let charte of chartes" [value]="charte">
             {{charte}}
           </mat-radio-button>
         </mat-radio-group>
@@ -406,15 +406,15 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup" optional>
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="secondFormGroup" >
+      <form>
         <ng-template matStepLabel></ng-template>
         <label>Connexion au reseaux sociaux?</label><br>
-        <mat-radio-group
+        <mat-radio-group [formGroup]="firstFormGroup"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
           [(ngModel)]="favoriteSeason">
-          <mat-radio-button class="example-radio-button" *ngFor="let sociale of sociales" [value]="sociale">
+          <mat-radio-button formControlName="modele" class="example-radio-button" *ngFor="let sociale of sociales" [value]="sociale">
             {{sociale}}
           </mat-radio-button>
         </mat-radio-group>
@@ -425,15 +425,15 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup" optional>
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="secondFormGroup" >
+      <form  >
         <ng-template matStepLabel></ng-template>
         <label >Avez vous besoin d'un logo ?</label><br>
-        <mat-radio-group
+        <mat-radio-group [formGroup]="firstFormGroup"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
           [(ngModel)]="favoriteSeason">
-          <mat-radio-button class="example-radio-button" *ngFor="let logo of logos" [value]="logos">
+          <mat-radio-button formControlName="logo" class="example-radio-button" *ngFor="let logo of logos" [value]="logo">
             {{logo}}
           </mat-radio-button>
         </mat-radio-group>
@@ -444,15 +444,15 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup" optional>
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="secondFormGroup" >
+      <form >
         <ng-template matStepLabel></ng-template>
-        <label >Avez vous la charte graphique?</label><br>
-        <mat-radio-group
+        <label >L'utilisateur a t'il besoin d'un espace personnel</label><br>
+        <mat-radio-group [formGroup]="firstFormGroup"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
           [(ngModel)]="favoriteSeason">
-          <mat-radio-button class="example-radio-button" *ngFor="let charte of chartes" [value]="charte">
+          <mat-radio-button formControlName="profil" class="example-radio-button" *ngFor="let charte of chartes" [value]="charte">
             {{charte}}
           </mat-radio-button>
         </mat-radio-group>
@@ -463,20 +463,20 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup" optional>
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="secondFormGroup" >
+      <form >
         <ng-template matStepLabel></ng-template>
         <label >Quels modèles économique souhaitez vous ? </label><br>
-        <mat-radio-group
+        <mat-radio-group [formGroup]="firstFormGroup"
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
           [(ngModel)]="favoriteSeason">
-          <mat-radio-button class="example-radio-button" *ngFor="let modele of modeles" [value]="modele">
+          <mat-radio-button formControlName="modele" class="example-radio-button" *ngFor="let modele of modeles" [value]="modele">
             {{modele}}
           </mat-radio-button>
         </mat-radio-group>
         <div>
-          <button (submit)="Onsubmit()" mat-button matStepperPrevious>Soumettre</button>
+          <button mat-button matStepperPrevious>Soumettre</button>
         </div>
       </form>
     </mat-step>
