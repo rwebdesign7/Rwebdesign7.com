@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 providedIn: 'root'
 })
 export class ConnectionService {
-mail = 'http://mail.rwebdesign7.com.';
+mail = 'http://mail.rwebdesign7.com';
 constructor(private http: HttpClient) { }
 
 sendMessage(messageContent: any) {
